@@ -1,10 +1,12 @@
 import { Suspense } from "react";
-import { get } from "../../services"
 import PostList from "./PostList";
+import { getFetch } from "../../services";
+
 
 const Posts = async () => {
 
-  const users = await get(`api/v1/user`)
+  // const users = await get(`api/v1/user`)
+  const users = await getFetch('api/v1/user')
 
   return (
     <div>

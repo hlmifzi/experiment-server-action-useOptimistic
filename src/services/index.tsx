@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import { hostname  } from "./constant"
-import { revalidatePath } from "next/cache"
+import { revalidateTag } from "next/cache"
 
 const api = axios.create({
     baseURL: hostname,
@@ -27,6 +27,12 @@ export const post = async (endPoint: string, body= {}) => {
     } catch (error) {
         console.error(error)
     } finally {
-        revalidatePath("")
+        revalidateTag("users")
     }
+}
+
+export const getFetch = async(endPoint: string) => {
+    const res = await fetch(`${hostname}${endPoint}`)
+    if (!res.ok) throw new Error('Failed to fetch data')
+    return res.json()
 }
