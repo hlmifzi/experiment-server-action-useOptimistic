@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { get } from "../../services"
 import PostList from "./PostList";
+import Client from "@/components/Client";
 
 const Posts = async () => {
 
@@ -8,6 +9,7 @@ const Posts = async () => {
 
   return (
     <div>
+      <h1>User</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <PostList users={users} />
       </Suspense>

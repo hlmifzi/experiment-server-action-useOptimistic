@@ -9,9 +9,14 @@ export const PostList = ({ users }: { users: any }) => {
 
   const [optimisticUsers, addOptimisticUsers] = useOptimistic(
     users,
-    (state, newUsers) => [
-      ...state, newUsers
-    ]
+    (state: any[], newUsers: any) => {
+      return [
+        ...state, {
+          name: newUsers.name,
+          sending: true
+        }
+      ]
+    }
   );
 
   const handleAdd = async (formData: FormData) => {
@@ -20,22 +25,25 @@ export const PostList = ({ users }: { users: any }) => {
     }
 
     addOptimisticUsers(newUser)
-    await post(`api/v1/user`, newUser)
     formRef.current?.reset()
+    await post(`api/v1/user`, newUser)
   }
 
   return (
-    <form action={handleAdd} ref={formRef}>
-      <input type="text" name="name" />
-      <SubmitButton />
-      {optimisticUsers?.map((user: any, i: number) => {
-        return (
-          <div key={i}>{user.name}{" "}
-          {!!users.sending && <small> (Sending...)</small>}
-          </div>
-        )
-      })}
-    </form>
+    <section>
+      <form action={handleAdd} ref={formRef}>
+        <input type="text" name="name" />
+        <SubmitButton />
+        {optimisticUsers?.map((user: any, i: number) => {
+          return (
+            <>
+              <div key={i}>{user.name}{" "}</div>
+              {!!user.sending && <small> (Sending...)</small>}
+            </>
+          )
+        })}
+      </form>
+    </section>
   )
 }
 
