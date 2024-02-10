@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+experimental:
+[x] server action
+[x] formAction
+[x] useOptimistic
+
+may be you can use fetch from next js to use revalidateTag itu better
+
+
 ## Getting Started
 
 First, run the development server:
