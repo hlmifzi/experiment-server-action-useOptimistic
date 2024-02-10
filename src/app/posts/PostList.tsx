@@ -30,20 +30,20 @@ export const PostList = ({ users }: { users: any }) => {
   }
 
   return (
-    <section>
+  
       <form action={handleAdd} ref={formRef}>
         <input type="text" name="name" />
         <SubmitButton />
         {optimisticUsers?.map((user: any, i: number) => {
           return (
-            <>
-              <div key={i}>{user.name}{" "}</div>
+            <div key={i}>
+              <p>{user.name}{" "}</p>
               {!!user.sending && <small> (Sending...)</small>}
-            </>
+            </div>
           )
         })}
       </form>
-    </section>
+    
   )
 }
 

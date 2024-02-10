@@ -27,6 +27,6 @@ export const post = async (endPoint: string, body= {}) => {
     } catch (error) {
         console.error(error)
     } finally {
-        revalidatePath("/posts")
+        revalidatePath("")
     }
 }

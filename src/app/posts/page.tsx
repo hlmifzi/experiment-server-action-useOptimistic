@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { get } from "../../services"
 import PostList from "./PostList";
-import Client from "@/components/Client";
 
 const Posts = async () => {
 
