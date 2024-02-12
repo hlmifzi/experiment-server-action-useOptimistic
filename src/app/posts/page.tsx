@@ -1,12 +1,14 @@
 import { Suspense } from "react";
 import PostList from "./PostList";
-import { getFetch } from "../../services";
+import { fetchUser } from "../posts/action"
+import { motion } from "framer-motion"
+import { useInView } from 'react-intersection-observer';
 
+// https://dev-overflow-nextjs13-rakibtweets.vercel.app/
 
 const Posts = async () => {
 
-  // const users = await get(`api/v1/user`)
-  const users = await getFetch('api/v1/user')
+  const users = await fetchUser()
 
   return (
     <div>
