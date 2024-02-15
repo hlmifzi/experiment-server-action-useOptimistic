@@ -4,6 +4,8 @@ import { fetchUser } from "../posts/action"
 import { motion } from "framer-motion"
 import { useInView } from 'react-intersection-observer';
 
+export const revalidate = 3600
+
 // https://dev-overflow-nextjs13-rakibtweets.vercel.app/
 
 const Posts = async () => {
